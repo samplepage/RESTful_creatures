@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router()
+const fs = require('fs') 
 
 //------DINO INDEX ROUTE------
 //change to router., and remove the dinosaurs after the slash 
-router.get('/dinosaurs', (req, res)=>{
+router.get('/index', (req, res)=>{
     let dinosaursList = fs.readFileSync('./dinosaurs.json')
     let dinoData =  JSON.parse(dinosaursList)
     console.log(dinoData)
@@ -21,12 +22,12 @@ router.get('/dinosaurs', (req, res)=>{
 })
 
 //------dino new route--------
-router.get('/dinosaurs', (req, res)=>{
+router.get('/new', (req, res)=>{
     res.render('dinosaurs/new')
 })
 
 //-----DINO POST ROUTE---------
-router.post('/dinosaurs', (req, res)=>{
+router.post('/', (req, res)=>{
     let dinosaursList = fs.readFileSync('./dinosaurs.json')
     let dinoData =  JSON.parse(dinosaursList)
     console.log(req.body.name)
@@ -40,7 +41,7 @@ router.post('/dinosaurs', (req, res)=>{
 })
 
 //-------DINO SHOW ROUTE--------
-router.get('/dinosaurs/:idx', (req, res)=>{
+router.get('/:idx', (req, res)=>{
     let dinosaursList = fs.readFileSync('./dinosaurs.json')
     let dinoData =  JSON.parse(dinosaursList)
 
