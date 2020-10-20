@@ -4,7 +4,7 @@ const fs = require('fs')
 
 
 //--------prehistoric index route---------
-router.get('/', (req, res)=>{
+router.get('/index', (req, res)=>{
     let prehistoricList = fs.readFileSync('./prehistoric_creatures.json')
     let prehistoricData =  JSON.parse(prehistoricList)
     console.log(prehistoricData)
